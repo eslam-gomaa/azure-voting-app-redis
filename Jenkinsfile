@@ -1,6 +1,6 @@
 pipeline {
-   agent any
-
+   //agent any
+   agent Docker
    stages {
       stage('Verify Branch') {
          steps {
