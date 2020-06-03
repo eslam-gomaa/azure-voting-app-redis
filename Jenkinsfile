@@ -7,9 +7,16 @@ pipeline {
             echo "$GIT_BRANCH"
          }
       }
-      stage('Hello 2') {
+      stage('Docker Build') {
          steps {
-            echo 'Step in the Second Stage'
+            sh(script: 'docker images -a')
+            sh(script: """
+            cd zure-vote/
+            docker images -a
+            docker built -t jenkins-pipeline .
+            docker images -a
+            cd ..
+            """)
          }
       }
    }
