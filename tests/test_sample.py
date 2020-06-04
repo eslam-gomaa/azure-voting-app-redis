@@ -1,3 +1,4 @@
+#!/usr/bin/python
 def inc(x):
     return x + 1
 
