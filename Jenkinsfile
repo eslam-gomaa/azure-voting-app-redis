@@ -62,6 +62,7 @@ pipeline {
                script { // Run Groovy code as a single script instead of having to define it line by line
                   def registry_url = "https://index.docker.io/v1"
                   withCredentials([usernamePassword( credentialsId: 'DockerHub', usernameVariable: 'USER', passwordVariable: 'PASSWORD')]) {
+                     sh(script: "docker login -u $USER -p $PASSWORD ${registry_url}")
                      docker.withRegistry("${registry_url}", "DockerHub") { //DockerHub - the if for DockerHub credentials from Jenkins
                         def image = docker.build("darkenman/azure-voting-app-testing:${env.BUILD_ID}")
                         image.push()
