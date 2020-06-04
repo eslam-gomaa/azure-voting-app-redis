@@ -25,7 +25,7 @@ pipeline {
          steps {
             sh(script: 'docker images -a')
             sh(script: """
-            docker compose up -d
+            docker-compose up -d
             ./scripts/test_container.ps1
             """)
          }
@@ -49,6 +49,7 @@ pipeline {
          steps {
             sh(script: """
             docker-compose down
+            
             """)
          }
       }
