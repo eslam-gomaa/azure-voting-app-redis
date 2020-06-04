@@ -26,10 +26,10 @@ pipeline {
             sh(script: 'docker images -a')
             sh(script: """
             docker-compose up -d
-            #chmod +x ./scripts/test_container.ps1
-            #./scripts/test_container.ps1
-            chmod +x ./scripts/test_sample.py
-            ./tests/test_sample.py
+            chmod +x ./scripts/test_container.ps1
+            ./scripts/test_container.ps1
+            #chmod +x ./scripts/test_sample.py
+            #./tests/test_sample.py
             """)
          }
          post {
