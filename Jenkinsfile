@@ -60,11 +60,8 @@ pipeline {
             echo "Workspace is $WORKSPACE"
             dir("$WORKSPACE/azure-vote") {
                script { // Run Groovy code as a single script instead of having to define it line by line
-                  echo 'auth'
                   docker.withRegistry('https://index.docker.io/v1', 'DockerHub') { //DockerHub - the if for DockerHub credentials from Jenkins
-                     echo 'build'
-                     echo 'push'
-                     def image = docker.build('darkenman/azure-voting-app-testing:latest')
+                     def image = docker.build('darkenman/azure-voting-app-testing:${env.BUILD_ID}')
                      image.push()
                   }
                }
