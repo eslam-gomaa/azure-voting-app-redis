@@ -28,8 +28,6 @@ pipeline {
             docker-compose up -d
             chmod +x ./scripts/test_container.ps1
             ./scripts/test_container.ps1
-            #chmod +x ./scripts/test_sample.py
-            #./tests/test_sample.py
             """)
          }
          post {
@@ -44,7 +42,8 @@ pipeline {
       stage('Run Tests') {
          steps {
             sh(script: """
-            sh(script: ./tests/test_sample.py)
+            chmod +x ./tests/test_sample.py
+            ./tests/test_sample.py
             """)
          }
       }
