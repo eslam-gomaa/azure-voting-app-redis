@@ -76,6 +76,11 @@ pipeline {
                   sh(script: "trivy darkenman/azure-voting-app-testing:${env.BUILD_ID}")
                }
             }
+            stage('Run Trivy 2') {
+               steps {
+                  sh(script: "trivy darkenman/azure-voting-app-testing:${env.BUILD_ID}")
+               }
+            }
          }
       }
    }
