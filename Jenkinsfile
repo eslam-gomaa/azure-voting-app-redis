@@ -69,5 +69,13 @@ pipeline {
             }
          }
       }
+      stage('Run Trivy') {
+         steps {
+            sh(script: """
+            trivy darkenman/azure-voting-app-testing:"${env.BUILD_ID}"
+            
+            """)
+         }
+      }
    }
 }
