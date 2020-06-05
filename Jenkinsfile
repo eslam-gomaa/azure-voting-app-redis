@@ -77,11 +77,5 @@ pipeline {
             """)
          }
       }
-      stage('Run Anchore') {
-         steps {
-         sh(script: "echo darkenman/azure-voting-app-testing:${env.BUILD_ID} > anchore_images")
-         anchore name: 'anchore_images'
-         }
-      }
    }
 }
